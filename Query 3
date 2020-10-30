@@ -1,0 +1,6 @@
+select SECTOR_NAME from `1.tbcell` where
+    (SECTOR_NAME like 'A池%' or
+    SECTOR_NAME like '高铁%' or
+    SECTOR_NAME like '%医院%' or
+    SECTOR_NAME like '%实验高中%')
+    and SECTOR_NAME not like '%-1'
