@@ -1,0 +1,4 @@
+select SECTOR_ID, SECTOR_NAME from `1.tbcell` where
+    (SECTOR_ID like '_____-__' or
+    SECTOR_ID like '_____-_') and
+    (ENODEBID like )
