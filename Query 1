@@ -4,4 +4,4 @@ select SECTOR_ID, SECTOR_NAME, ENODEBID, ENODEB_NAME,
     (LATITUDE between 33.75 and 33.8) and
     (PCI between 150 and 300) and
     (VENDOR is not null)
-    order by LONGITUDE, LATITUDE, EARFCN desc;
+    order by LONGITUDE desc, LATITUDE desc, EARFCN desc;
