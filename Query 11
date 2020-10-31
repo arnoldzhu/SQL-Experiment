@@ -1,0 +1,7 @@
+select SECTOR_NAME, max(Traffic) as MAX_TRAFFIC
+    from `14. tbcell_traffic-57个小区一年小时级数据` natural join `1.tbcell`
+    where
+    (Date like '5%') and
+    ((Hour between 9 and 11) or (Hour between 19 and 21)) and
+    (LONGITUDE between 112.3 and 112.5) and
+    (LATITUDE between 33 and 34)
