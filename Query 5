@@ -1,0 +1,4 @@
+(select distinct 小区名称 from `12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719` where
+    `RRC建立成功率qf (%)` > 0.95) union all
+(select distinct 小区名称 from `12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719` where
+    `E-RAB建立成功率2 (%)` > 0.99)
