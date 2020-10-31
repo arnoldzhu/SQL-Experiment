@@ -1,0 +1,3 @@
+# query statement with aggregation function max()
+select distinct ENODEB_NAME from `1.tbcell` where
+    LATITUDE = (select max(LATITUDE) from `1.tbcell`)
