@@ -1,6 +1,6 @@
 select distinct ENODEBID, ENODEB_NAME, LONGITUDE, LATITUDE,
-                STYLE, VENDOR, PCI from `1.tbcell` where
-    exists(select ENODEBID from `1.tbcell` where PCI between 100 and 200) and
+                STYLE, VENDOR from `1.tbcell` where
+    (PCI between 100 and 200) and
     (LONGITUDE between 112.2 and 112.5) and
     (LATITUDE between 33.5 and 33.8)
     order by LATITUDE desc, LONGITUDE desc;
