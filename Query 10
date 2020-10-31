@@ -1,0 +1,4 @@
+select A.SCELL, A.NCELL, A.C2I_Mean from `10. tbc2i` as A, `10. tbc2i` as B where
+    (B.SCELL = '124673-0' and B.NCELL = '259772-0') and
+    (A.C2I_Mean > B.C2I_Mean)
+    order by C2I_Mean desc;
