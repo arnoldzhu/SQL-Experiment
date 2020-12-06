@@ -1,0 +1,6 @@
+select distinct SECTOR_ID, count(N_SECTOR_ID) as N_NUM
+from bupt2018dbs11db.`2.tbadjcell`, bupt2018dbs11db.`4.tboptcell`
+where S_SECTOR_ID = SECTOR_ID
+group by SECTOR_ID
+having count(N_SECTOR_ID)>10
+order by count(N_SECTOR_ID) desc
