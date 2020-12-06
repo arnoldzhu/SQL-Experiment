@@ -1,0 +1,5 @@
+with avg_success_rate(value) as
+    (select avg(`RRC建立成功率qf (%)`) from `12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719`)
+select 小区名称, avg_success_rate.value
+    from `12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719`, avg_success_rate
+    where avg_success_rate.value > 0.992
