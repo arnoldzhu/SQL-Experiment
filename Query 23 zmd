@@ -1,0 +1,4 @@
+# 返回的结果非空，代表ENODEB_ID -> PCI的函数依赖不成立 
+select ENODEB_ID from `5. tbpciassignment`
+    group by ENODEB_ID
+        having count(distinct PCI) > 1
