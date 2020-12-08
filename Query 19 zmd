@@ -1,0 +1,6 @@
+# 注意事项：和ppt上例子不同的是，mysql规定子表要起一个别名（本题中为括号后的A）
+select 小区名称, avg_success_rate
+    from( select 小区名称, avg(`RRC建立成功率qf (%)`) as avg_success_rate
+            from `12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719`
+                group by 小区名称
+            )  A where avg_success_rate > 0.992
