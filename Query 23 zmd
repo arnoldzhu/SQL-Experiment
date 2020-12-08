@@ -2,3 +2,7 @@
 select ENODEB_ID from `5. tbpciassignment`
     group by ENODEB_ID
         having count(distinct PCI) > 1
+
+# 用以下语句查找可以返回时函数依赖不成立的元组（其实是所有元组）
+select distinct A.PCI, A.ENODEB_ID from `5. tbpciassignment` as A, `5. tbpciassignment` as B
+    where A.ENODEB_ID = B.ENODEB_ID
