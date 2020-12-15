@@ -1,6 +1,11 @@
-select ENODEBID, avg(Traffic) as agv_traffic
-from bupt2018dbs11db.`1.tbcell`  natural join
-     bupt2018dbs11db.`14. tbcell_traffic-57个小区一年小时级数据`
-where EARFCN = 38400
-group by ENODEBID
-order by agv_traffic desc
+# group by后面若有多项，则认为全部属性相等的一项为一组
+with T(total_avg) as(
+    select avg(Traffic)
+    from bupt2018dbs11db.`14. tbcell_traffic-57个小区一年小时级数据` as T2 natural join bupt2018dbs11db.`1.tbcell` as T1
+    where EARFCN = 38400
+)
+
+select ENODEB_NAME, avg(Traffic)
+from bupt2018dbs11db.`1.tbcell` as T1 natural join bupt2018dbs11db.`14. tbcell_traffic-57个小区一年小时级数据` as T2, T
+group by ENODEB_NAME,T.total_avg
+having avg(Traffic)>T.total_avg
