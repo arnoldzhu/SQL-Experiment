@@ -1,0 +1,6 @@
+update `7. tbatuc2i` set `RANK` = case
+                                    when (COSITE = 1 and `RANK` >= 1) then `RANK` - 1
+                                    when (COSITE = 0) then `RANK` + 1
+                                    else `RANK`
+                                  end
+                    where SECTOR_ID = '238397-1';
