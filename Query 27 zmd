@@ -1,0 +1,5 @@
+update `1.tbcell` as TBCELL
+    set TBCELL.PCI = (select TBASSIGN.PCI
+                        from `5. tbpciassignment` as TBASSIGN
+                            where TBCELL.SECTOR_ID = TBASSIGN.SECTOR_ID)
+        where SECTOR_ID in (select SECTOR_ID from `5. tbpciassignment`);
