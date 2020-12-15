@@ -1,1 +1,3 @@
-
+select A.SECTOR_ID, A.SECTOR_NAME, A.EARFCN, B.N_SECTOR_ID, B.N_EARFCN, C.N_SECTOR_ID
+       from `1.tbcell` as A natural join `2.tbadjcell` as B natural join `3.tbsecadjcell` as C
+        where B.N_SECTOR_ID = C.N_SECTOR_ID;
