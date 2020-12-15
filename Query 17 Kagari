@@ -1,0 +1,19 @@
+17-1
+
+select *
+from bupt2018dbs11db.`11. tbhandover` as tbh
+where exists(
+    select NCELL from bupt2018dbs11db.`11. tbhandover` as tbh2 where tbh.SCELL=tbh2.SCELL and NCELL='15290-128'
+    )
+  and exists(
+    select NCELL from bupt2018dbs11db.`11. tbhandover` as tbh2 where tbh.SCELL=tbh2.SCELL and NCELL='259595-1'
+    )
+  and exists(
+    select NCELL from bupt2018dbs11db.`11. tbhandover` as tbh2 where tbh.SCELL=tbh2.SCELL and NCELL='124711-0'
+    )
+and exists(
+    select NCELL from bupt2018dbs11db.`11. tbhandover` as tbh2 where tbh.SCELL=tbh2.SCELL and NCELL='47444-1'
+    ) ;
+
+17-2
+不会
