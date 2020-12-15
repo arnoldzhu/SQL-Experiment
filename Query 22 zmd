@@ -1,0 +1,5 @@
+# 是不是要在count()函数里一个一个试所有其他属性？
+select TimeStamp, ServingSector, InterferingSector
+    from `9. tbmrodata`
+        group by TimeStamp, ServingSector, InterferingSector
+            having count(distinct LteNcPci) > 1
