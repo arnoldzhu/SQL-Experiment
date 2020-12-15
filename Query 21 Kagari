@@ -1,0 +1,8 @@
+with T(ID, N_NUM) as(
+    select A.S_SECTOR_ID, count(A.N_SECTOR_ID)
+    from bupt2018dbs11db.`2.tbadjcell` as A
+    group by A.S_SECTOR_ID
+)
+
+select ID, max(N_NUM)
+from T
