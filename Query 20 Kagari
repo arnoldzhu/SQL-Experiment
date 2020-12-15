@@ -1,0 +1,10 @@
+with avg_success_rate(name,value) as(
+    select 小区名称, avg(`RRC建立成功率qf (%)`)
+    from bupt2018dbs11db.`12. tbcellkpi-优化区17日-19日kpi指标统计表-0717至0719`
+    group by 小区名称
+)
+
+select name, value
+from avg_success_rate
+where value > 0.992
+
