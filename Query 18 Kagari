@@ -1,0 +1,10 @@
+select ENODEB_NAME
+from bupt2018dbs11db.`1.tbcell` as T1, bupt2018dbs11db.`2.tbadjcell` as T2
+where unique(
+    select *
+    from T2
+    group by T2.S_SECTOR_ID
+    having count(*) > 1
+)
+and T1.SECTOR_ID = T2.S_SECTOR_ID
+and T1.ENODEBID = 15114
