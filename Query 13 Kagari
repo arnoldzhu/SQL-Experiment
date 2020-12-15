@@ -1,0 +1,6 @@
+select ENODEBID, avg(Traffic) as agv_traffic
+from bupt2018dbs11db.`1.tbcell`  natural join
+     bupt2018dbs11db.`14. tbcell_traffic-57个小区一年小时级数据`
+where EARFCN = 38400
+group by ENODEBID
+order by agv_traffic desc
