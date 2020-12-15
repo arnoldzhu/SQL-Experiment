@@ -8,10 +8,22 @@ select B.SECTOR_ID, sum(Traffic) as sum_traffic
     (LATITUDE between 33 and 34)
     group by B.SECTOR_ID;
 
-# 查询最大、最小、平均月忙时话务量
+# (1) 查询最大、最小、平均月忙时话务量
 select max(sum_traffic) as max_monthly_traffic, min(sum_traffic) as min_monthly_traffic,
             avg(sum_traffic) as avg_monthly_traffic from
                 (   select B.SECTOR_ID, sum(Traffic) as sum_traffic
+                    from `14. tbcell_traffic-57个小区一年小时级数据` as A inner join `1.tbcell` as B
+                    where A.Sector_ID = B.SECTOR_ID and
+                        (Date like '5%') and
+                        ((Hour between 9 and 11) or (Hour between 19 and 21)) and
+                        (LONGITUDE between 112 and 113) and
+                        (LATITUDE between 33 and 34)
+                    group by B.SECTOR_ID
+                ) as Traffic_Stats;
+
+# (2) 找到月忙时话务量最大的小区
+select SECTOR_ID, SECTOR_NAME, LONGITUDE, LATITUDE, max(sum_traffic) as monthly_traffic from
+                (   select B.SECTOR_ID, B.SECTOR_NAME, B.LONGITUDE, B.LATITUDE, sum(Traffic) as sum_traffic
                     from `14. tbcell_traffic-57个小区一年小时级数据` as A inner join `1.tbcell` as B
                     where A.Sector_ID = B.SECTOR_ID and
                         (Date like '5%') and
