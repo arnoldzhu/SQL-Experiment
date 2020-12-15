@@ -1,14 +1,14 @@
-# Query 14 TODO
-select distinct A.SECTOR_NAME from
-    `1.tbcell` as A, `5. tbpciassignment` as B, `4.tboptcell` where A.PCI = B.PCI
-    and CELL_TYPE in (select CELL_TYPE from `4.tboptcell` where CELL_TYPE = '优化区')
+# Query 14
+select distinct A.SECTOR_ID, A.SECTOR_NAME, A.PCI as PCI_before, B.PCI as PCI_after from
+    `1.tbcell` as A, `5. tbpciassignment` as B, `4.tboptcell` as C where A.PCI = B.PCI
+    and CELL_TYPE in (select CELL_TYPE from `4.tboptcell` where CELL_TYPE = '优化区');
 
-# 多表连接 (有问题)
-select distinct B.SECTOR_NAME, B.PCI, `1.tbcell`.PCI from `1.tbcell` natural join `4.tboptcell`
-    ,`5. tbpciassignment` as B
-    where B.PCI = `1.tbcell`.PCI and `4.tboptcell`.CELL_TYPE = '优化区'
+# 多表连接
+select distinct A.SECTOR_ID, A.SECTOR_NAME, A.PCI as PCI_before, C.PCI as PCI_after
+    from `1.tbcell` as A join `4.tboptcell` as B join `5. tbpciassignment` as C
+        where CELL_TYPE = '优化区' and A.PCI = C.PCI;
 
 # 非嵌套查询
-select distinct A.SECTOR_NAME, A.PCI, C.PCI from
+select distinct A.SECTOR_ID, A.SECTOR_NAME, A.PCI as PCI_before, C.PCI as PCI_after from
     `1.tbcell` as A, `4.tboptcell` as B , `5. tbpciassignment` as C
     where B.CELL_TYPE = '优化区' and A.PCI = C.PCI
