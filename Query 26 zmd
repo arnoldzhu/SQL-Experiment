@@ -1,0 +1,11 @@
+# 找最小值
+select min(HOSUCC) from `11. tbhandover`;
+
+# 找最小值小区的数目
+select SCELL from `11. tbhandover` where HOSUCC = 0;
+
+# 删除最小值的项
+with minswap(value) as (select min(HOSUCC) from `11. tbhandover`)
+delete from `11. tbhandover` where HOSUCC in (
+    select value from minswap
+    );
