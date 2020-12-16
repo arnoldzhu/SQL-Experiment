@@ -9,11 +9,10 @@ where HEIGHT > some (
 )
 
 15-2
-select SECTOR_NAME, SECTOR_ID, HEIGHT
-from bupt2018dbs11db.`1.tbcell`
-where HEIGHT > some (
-    select HEIGHT
-    from bupt2018dbs11db.`1.tbcell`
-    where LONGITUDE between 111.6 and 112.0
-        and LATITUDE between 33.3 and 33.6
+select CellID, FileName, RSRP
+from bupt2018dbs11db.`6. tbatudata`
+where RSRP > some(
+    select RSRP
+    from bupt2018dbs11db.`6. tbatudata`
+    where CellID like '253903%'
 )
