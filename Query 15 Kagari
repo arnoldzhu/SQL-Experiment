@@ -9,7 +9,7 @@ where HEIGHT > some (
 )
 
 15-2
-select CellID, FileName, RSRP
+select distinct CellID, FileName, RSRP
 from bupt2018dbs11db.`6. tbatudata`
 where RSRP > some(
     select RSRP
